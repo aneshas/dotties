@@ -15,8 +15,8 @@ set t_Co=256
 " solarized
 let g:solarized_termcolors=256
 " colorscheme solarized
-colorscheme phoenix
-" colorscheme railscasts
+" colorscheme phoenix
+colorscheme railscasts
 
 " line numbers
 set number
@@ -177,3 +177,9 @@ call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
+" vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
