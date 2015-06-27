@@ -8,13 +8,12 @@ set shell=/bin/bash
 " color schemes
 set background=dark
 set t_Co=256
+let g:solarized_termcolors=256
+" colorscheme solarized
 " colorscheme distinguished
 " colorscheme inori
 " colorscheme molokai
 " colorscheme mango
-" solarized
-let g:solarized_termcolors=256
-" colorscheme solarized
 " colorscheme phoenix
 colorscheme railscasts
 " colorscheme oxeded

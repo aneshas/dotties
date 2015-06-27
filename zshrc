@@ -94,8 +94,11 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 export TERM="xterm-color"
 export EDITOR="vim"
-alias pr='cd ~/git;clear;ls -lah;pwd'
+
+# aliases
 alias lol='ssh root@loltrip.com'
+alias gogit='cd ~/git;clear;ls -lah;pwd'
+alias gogo='cd ~/go/src/github.com/aneshas;clear;ls -lah;pwd'
 alias a='ssh anes@52.10.176.0'
 alias h='htop'
 alias cos='ssh anes@d.cityos.io'
