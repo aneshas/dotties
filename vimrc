@@ -2,10 +2,13 @@
 execute pathogen#infect()
 call pathogen#helptags()
 
+set title
+
 syntax on
 set shell=/bin/bash
 
 " color schemes
+highlight LineNr ctermfg=015
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
@@ -15,8 +18,17 @@ let g:solarized_termcolors=256
 " colorscheme molokai
 " colorscheme mango
 " colorscheme phoenix
-colorscheme railscasts
+" colorscheme railscasts
 " colorscheme oxeded
+" colorscheme kalahari
+" colorscheme feral
+" colorscheme abra
+" colorscheme nefertiti
+" colorscheme sorcerer
+
+" colorscheme znake
+
+" colorscheme gotham
 
 " line numbers
 set number
@@ -36,6 +48,9 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+
+" dwlimitmate ident after braces
+let delimitMate_expand_cr=1
 
 " remap END key
 nnoremap 0 $
@@ -147,7 +162,7 @@ map <leader>f :NERDTreeFind<CR>
 
 " netrw
 let g:netrw_liststyle=3
-let g:netrw_winsize=25 
+let g:netrw_winsize=17
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_banner = 0
@@ -218,10 +233,10 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>gr <Plug>(go-rename)
 

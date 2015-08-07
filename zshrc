@@ -111,3 +111,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # tmux
 alias tmux="TERM=xterm-256color tmux"
 
+# vim
+alias vi="TERM=screen-256color vi"
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
