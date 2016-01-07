@@ -6,13 +6,26 @@ set title
 
 syntax on
 set shell=/bin/bash
+call togglebg#map("<F5>")
+
+" vertical line styling
+set fillchars=vert:│
+autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
+
+" required for base16 colorscheme
+let base16colorspace=256
+
+" gruvbox
+let g:gruvbox_contrast_dark = "hard"
 
 " color schemes
 highlight LineNr ctermfg=015
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
+colorscheme gruvbox 
 " colorscheme solarized
+" colorscheme base16-default 
 " colorscheme distinguished
 " colorscheme inori
 " colorscheme molokai
@@ -25,13 +38,15 @@ let g:solarized_termcolors=256
 " colorscheme abra
 " colorscheme nefertiti
 " colorscheme sorcerer
-
 " colorscheme znake
-
 " colorscheme gotham
 
 " line numbers
-set number
+" set number
+" set nonumber
+
+" normal mode enter to go to line
+nnoremap <CR> G
 
 " remap leader key
 let mapleader=","
@@ -54,7 +69,9 @@ let delimitMate_expand_cr=1
 
 " remap END key
 nnoremap 0 $
+noremap 0 $
 nnoremap 9 0
+noremap 9 0
 
 " Incremental search
 set incsearch
@@ -239,4 +256,8 @@ au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>gr <Plug>(go-rename)
+au FileType go nmap <Leader>gi <Plug>(go-imports)
 
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

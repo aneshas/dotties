@@ -99,9 +99,9 @@ export EDITOR="vim"
 alias lol='ssh root@loltrip.com'
 alias gogit='cd ~/git;clear;ls -lah;pwd'
 alias gogo='cd ~/go/src/github.com/aneshas;clear;ls -lah;pwd'
-alias a='ssh anes@52.10.176.0'
+alias a='ssh anes@goblin-ci.com'
 alias h='htop'
-alias cos='ssh anes@d.cityos.io'
+alias cdev="ssh anes@77.243.225.251"
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 
 # You can use whatever you want as an alias, like for Mondays:
@@ -114,3 +114,8 @@ alias tmux="TERM=xterm-256color tmux"
 # vim
 alias vi="TERM=screen-256color vi"
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+#google app engine sdk
+export PATH=$PATH:~/go_appengine
+alias avim="export GOPATH=$GOPATH:$HOME/go_appengine/goroot"
+alias appvi="GOPATH=$GOPATH:$HOME/go_appengine/goroot vi"
