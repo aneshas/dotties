@@ -7,7 +7,9 @@ export ZSH=/home/anes/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="wezm+"
-ZSH_THEME="miloshadzic"
+# ZSH_THEME="miloshadzic"
+ZSH_THEME="sorin"
+# ZSH_THEME="wedisagree"
 # ZSH_THEME="ys"
 # ZSH_THEME="af-magic"
 # ZSH_THEME="clean"
@@ -113,7 +115,6 @@ alias tmux="TERM=xterm-256color tmux"
 
 # vim
 alias vi="TERM=screen-256color vi"
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 #google app engine sdk
 export PATH=$PATH:~/go_appengine

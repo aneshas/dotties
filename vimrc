@@ -19,16 +19,15 @@ let base16colorspace=256
 let g:gruvbox_contrast_dark = "hard"
 
 " color schemes
-highlight LineNr ctermfg=015
 set background=dark
 set t_Co=256
 let g:solarized_termcolors=256
-colorscheme gruvbox 
+" colorscheme gruvbox 
 " colorscheme solarized
 " colorscheme base16-default 
 " colorscheme distinguished
 " colorscheme inori
-" colorscheme molokai
+colorscheme molokai
 " colorscheme mango
 " colorscheme phoenix
 " colorscheme railscasts
@@ -42,8 +41,9 @@ colorscheme gruvbox
 " colorscheme gotham
 
 " line numbers
-" set number
-" set nonumber
+highlight LineNr ctermfg=240
+highlight LineNr ctermbg=233
+set number
 
 " normal mode enter to go to line
 nnoremap <CR> G
@@ -79,9 +79,32 @@ set incsearch
 " vim-airline
 set laststatus=2
 
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
 " vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " set the runtime path to include Vundle and initialize
 " set rtp+=~/.vim/bundle/Vundle.vim
@@ -97,6 +120,8 @@ au FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
 " command-t
 nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+let g:CommandTFileScanner = "git"
+let g:CommandTGitScanSubmodules = 0
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -109,9 +134,6 @@ let g:syntastic_check_on_wq = 0
 
 " vim-easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" tagbar
-nmap <F8> :TagbarToggle<CR>
 
 " Bi-directional find motion
 " " Jump to anywhere you want with minimal keystrokes, with just one key
@@ -215,9 +237,13 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
 let g:go_disable_autoinstall = 0
+let g:go_fmt_command = "goimports"
 
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+" tagbar
 let g:tagbar_type_go = {  
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -245,19 +271,33 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
+
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_line_numbers = 2
+" let g:tagbar_autopreview = 1
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+" vim-go
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>gr <Plug>(go-rename)
+au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>gi <Plug>(go-imports)
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let javascript_enable_domhtmlcss=1
+
+" Fugitive
+set diffopt+=vertical
+
+" vim-airline
+let g:airline_powerline_fonts = 1
