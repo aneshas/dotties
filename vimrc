@@ -28,6 +28,7 @@ let g:solarized_termcolors=256
 " colorscheme distinguished
 " colorscheme inori
 colorscheme molokai
+" colorscheme hybrid 
 " colorscheme mango
 " colorscheme phoenix
 " colorscheme railscasts
@@ -301,3 +302,6 @@ set diffopt+=vertical
 
 " vim-airline
 let g:airline_powerline_fonts = 1
+
+" rust
+let g:rustfmt_autosave = 1
