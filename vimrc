@@ -13,7 +13,10 @@ set fillchars=vert:│
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
 
 " required for base16 colorscheme
-let base16colorspace=256
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " gruvbox
 let g:gruvbox_contrast_dark = "hard"
@@ -21,14 +24,17 @@ let g:gruvbox_contrast_dark = "hard"
 " color schemes
 set background=dark
 set t_Co=256
+let g:rehash256 = 1
 let g:solarized_termcolors=256
+" colorscheme monokai-soda
+" colorscheme PaperColor
 " colorscheme gruvbox 
 " colorscheme solarized
-" colorscheme base16-default 
+" colorscheme base16-railscasts
 " colorscheme distinguished
 " colorscheme inori
-colorscheme molokai
-" colorscheme hybrid 
+" colorscheme molokai
+colorscheme hybrid 
 " colorscheme mango
 " colorscheme phoenix
 " colorscheme railscasts
@@ -65,7 +71,7 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" dwlimitmate ident after braces
+" delimitmate ident after braces
 let delimitMate_expand_cr=1
 
 " remap END key
@@ -81,7 +87,6 @@ set incsearch
 set laststatus=2
 
 " This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
 set hidden
 
 " To open a new empty buffer
@@ -132,6 +137,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 1
+" let g:syntastic_debug = 3
+
+" let g:syntastic_enable_go_checker = 1
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_aggregate_errors = 1
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " vim-easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -181,9 +193,9 @@ filetype plugin indent on    " required
 
 " Tabs
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Use :w!! to save with sudo if you're editing a readonly file
 cmap w!! w !sudo tee % >/dev/null
@@ -241,9 +253,6 @@ let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 0
 let g:go_fmt_command = "goimports"
 
-"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 " tagbar
 let g:tagbar_type_go = {  
     \ 'ctagstype' : 'go',
@@ -276,7 +285,9 @@ let g:tagbar_type_go = {
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_show_line_numbers = 2
 " let g:tagbar_autopreview = 1
-autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+" autopen tagbar
+" autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 " vim-go
 au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -290,6 +301,9 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>gi <Plug>(go-imports)
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+let g:go_auto_type_info=1
 
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -305,3 +319,24 @@ let g:airline_powerline_fonts = 1
 
 " rust
 let g:rustfmt_autosave = 1
+" ycm rust
+let g:ycm_rust_src_path = "/home/anes/rust/src/rust/src"
+" ycm
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Invisible chars
+" set listchars=eol:^,tab:✖.,trail:~,extends:>,precedes:<
+
+" set listchars=eol:™,tab:✖.,trail:~,extends:>,precedes:<
+" set listchars=tab:❱.,trail:~,extends:>,precedes:<
+" set listchars=eol:✖,tab:❱.,trail:~,extends:>,precedes:<
+"
+" set list
+
+setlocal omnifunc=necoghc#omnifunc
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" vim-devicons
+set encoding=utf8
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11

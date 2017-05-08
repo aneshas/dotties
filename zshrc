@@ -85,6 +85,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 # go 
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -117,6 +120,47 @@ alias tmux="TERM=xterm-256color tmux"
 alias vi="TERM=screen-256color vi"
 
 #google app engine sdk
-export PATH=$PATH:~/go_appengine
+# export PATH=$PATH:/home/anes/go_appengine
 alias avim="export GOPATH=$GOPATH:$HOME/go_appengine/goroot"
 alias appvi="GOPATH=$GOPATH:$HOME/go_appengine/goroot vi"
+
+# rust
+export PATH=$PATH:~/.cargo/bin
+
+# history log
+# export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+# precmd() { eval "$PROMPT_COMMAND" }
+
+# gitsome
+autoload bashcompinit
+bashcompinit
+source /home/anes/gh_complete.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/anes/google-cloud-sdk/path.zsh.inc ]; then
+  source '/home/anes/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/anes/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/home/anes/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# gcloud remove these two lines
+export PATH=$PATH:/home/anes/google-cloud-sdk/bin:/home/anes/google-cloud-sdk/platform/google_appengine
+
+# zmq
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+# protoc
+export PATH=$PATH:/home/anes/protoc-3.1.0/bin
+
+# cabal
+export PATH=$PATH:/home/anes/.cabal/bin
+
+# stack
+export PATH=$PATH:/home/anes/.local/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
