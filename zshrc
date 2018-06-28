@@ -1,14 +1,14 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/anes/.oh-my-zsh
+export ZSH=/Users/anes/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 # ZSH_THEME="wezm+"
 # ZSH_THEME="miloshadzic"
-ZSH_THEME="sorin"
+# ZSH_THEME="sorin"
 # ZSH_THEME="wedisagree"
 # ZSH_THEME="ys"
 # ZSH_THEME="af-magic"
@@ -85,14 +85,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export BASE16_SHELL=$HOME/.config/base16-shell/
+BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # go 
-export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
 
 # misc
 export CLICOLOR=1
@@ -118,6 +117,8 @@ alias tmux="TERM=xterm-256color tmux"
 
 # vim
 alias vi="TERM=screen-256color vi"
+alias nvi="TERM=screen-256color nvim"
+alias nvim="TERM=screen-256color nvim"
 
 #google app engine sdk
 # export PATH=$PATH:/home/anes/go_appengine
@@ -134,33 +135,19 @@ export PATH=$PATH:~/.cargo/bin
 # gitsome
 autoload bashcompinit
 bashcompinit
-source /home/anes/gh_complete.sh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /home/anes/google-cloud-sdk/path.zsh.inc ]; then
-  source '/home/anes/google-cloud-sdk/path.zsh.inc'
-fi
+if [ -f '/Users/anes/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/anes/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /home/anes/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/home/anes/google-cloud-sdk/completion.zsh.inc'
-fi
+if [ -f '/Users/anes/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/anes/google-cloud-sdk/completion.zsh.inc'; fi
 
-# gcloud remove these two lines
-export PATH=$PATH:/home/anes/google-cloud-sdk/bin:/home/anes/google-cloud-sdk/platform/google_appengine
+export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:$PATH
 
-# zmq
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+# proto
+export PATH=/usr/local/sbin/protoc-3/bin:$PATH
 
-# protoc
-export PATH=$PATH:/home/anes/protoc-3.1.0/bin
+# tiva
+export PATH=$PATH:/Users/anes/tiva/lm4tools/lm4flash
 
-# cabal
-export PATH=$PATH:/home/anes/.cabal/bin
-
-# stack
-export PATH=$PATH:/home/anes/.local/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

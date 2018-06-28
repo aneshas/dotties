@@ -91,3 +91,15 @@
 [submodule "vim/bundle/vim-devicons"]
 	path = vim/bundle/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/bundle/base16-vim"]
+	path = vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/bundle/omnisharp.vim"]
+	path = vim/bundle/omnisharp.vim
+	url = https://github.com/OmniSharp/omnisharp-vim.git
+[submodule "vim/bundle/vim-dispatch.git"]
+	path = vim/bundle/vim-dispatch.git
+	url = git://github.com/tpope/vim-dispatch.git

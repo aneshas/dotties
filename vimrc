@@ -3,6 +3,7 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 set title
+set cmdheight=1
 
 syntax on
 set shell=/bin/bash
@@ -19,22 +20,23 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 " gruvbox
-let g:gruvbox_contrast_dark = "hard"
+" let g:gruvbox_contrast_dark = "hard"
 
 " color schemes
 set background=dark
 set t_Co=256
 let g:rehash256 = 1
 let g:solarized_termcolors=256
+
+" colorscheme base16-default-dark
 " colorscheme monokai-soda
 " colorscheme PaperColor
-" colorscheme gruvbox 
+colorscheme gruvbox 
 " colorscheme solarized
-" colorscheme base16-railscasts
 " colorscheme distinguished
 " colorscheme inori
 " colorscheme molokai
-colorscheme hybrid 
+" colorscheme hybrid 
 " colorscheme mango
 " colorscheme phoenix
 " colorscheme railscasts
@@ -47,9 +49,11 @@ colorscheme hybrid
 " colorscheme znake
 " colorscheme gotham
 
+let g:airline_theme='luna'
+
 " line numbers
 highlight LineNr ctermfg=240
-highlight LineNr ctermbg=233
+highlight LineNr ctermbg=235
 set number
 
 " normal mode enter to go to line
@@ -109,6 +113,7 @@ nmap <leader>bl :ls<CR>
 " vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin indent off
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
@@ -189,13 +194,15 @@ endfunction
 " Plugin 'jelera/vim-javascript-syntax'
 
 " call vundle#end()            " required
+
+set rtp+=$GOROOT/misc/vim
 filetype plugin indent on    " required
 
 " Tabs
 set expandtab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Use :w!! to save with sudo if you're editing a readonly file
 cmap w!! w !sudo tee % >/dev/null
@@ -251,6 +258,17 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_disable_autoinstall = 0
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 10
+
+au FileType go nmap <leader>ga :GoAlternate<cr>
+au FileType go nmap <leader>gc :GoCoverageToggle -short<cr>
+
+let g:go_addtags_transform = "snakecase"
+
 let g:go_fmt_command = "goimports"
 
 " tagbar
@@ -328,7 +346,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Invisible chars
 " set listchars=eol:^,tab:✖.,trail:~,extends:>,precedes:<
 
-" set listchars=eol:™,tab:✖.,trail:~,extends:>,precedes:<
+" set listchars=eol:^,tab:✖ ,trail:~,extends:>,precedes:<
 " set listchars=tab:❱.,trail:~,extends:>,precedes:<
 " set listchars=eol:✖,tab:❱.,trail:~,extends:>,precedes:<
 "
@@ -340,3 +358,13 @@ let g:ycm_semantic_triggers = {'haskell' : ['.']}
 " vim-devicons
 set encoding=utf8
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+let g:WebDevIconsOS = 'Darwin'
+
+" yaml spacing
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
